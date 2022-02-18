@@ -50,7 +50,7 @@ class Rectangulo:
         else:
             self.inicial=inicial
             self.final=final
-    
+
     def base(self):
         base=self.inicial
         return base
