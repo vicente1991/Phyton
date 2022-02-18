@@ -1,44 +1,56 @@
 class Vehiculo():
-    def __init__(self, color, ruedas):
+    def init(self, color, ruedas):
         self.color = color
         self.ruedas = ruedas
 
 
 class Coche(Vehiculo):
-    def __init__(self, color, ruedas, velocidad, cilindrada):
-        super().__init__(color, ruedas)
+    def init(self, color, ruedas, velocidad, cilindrada):
+        super().init(color, ruedas)
         self.velocidad = velocidad
         self.cilindrada = cilindrada
 
 
 class Bicicleta(Vehiculo):
-    def __init__(self, color, ruedas, tipo):
-        super().__init__(color, ruedas)
+    def init(self, color, ruedas, tipo):
+        super().init(color, ruedas)
         self.tipo = tipo
 
 
 class Camioneta(Coche):
-    def __init__(self, color, ruedas, velocidad, precio, pesoMax):
-        super().__init__(color, ruedas, velocidad, precio)
-        self.pesoMax = pesoMax
+    def init(self, color, ruedas, velocidad, cilindrada, carga):
+        super().init(color, ruedas, velocidad, cilindrada)
+        self.carga = carga
 
 
 class Motocicleta(Bicicleta):
-    def __init__(self, color, ruedas, tipo, velocidad):
-        super().__init__(color, ruedas, tipo)
+    def init(self, color, ruedas, tipo, velocidad, cilindrada):
+        super().init(color, ruedas, tipo)
         self.velocidad = velocidad
+        self.cilindrada = cilindrada
 
 def catalogar(lista, ruedas=4):
+
+    count = 0
     for vehiculo in lista:
 
         if ruedas==vehiculo.ruedas:
-            print(type(vehiculo).__name__, vehiculo.__dict__, )
+            count = count + 1
 
-a = Camioneta("marron", 8, 120, 400, 500)
-b = Coche("verde", 4, 120, 800)
-c = Bicicleta("azul", 2, "triciclo")
-d = Coche("rosado", 4, 150, 800)
-e = Motocicleta("azul", 2, "sidecar", 150)
+            print(type(vehiculo).name, vehiculo.dict, )
+            print("Se encontraron", count, "vehículos con ", ruedas, " ruedas:")
+
+
+a = Camioneta("Rojo", 8, 120, 400, 500)
+
+b = Coche("Rojo", 4, 120, 800)
+
+c = Bicicleta("Rojo", 2, "Mountain Bike")
+
+d = Coche("Amarillo", 4, 150, 800)
+
+e = Motocicleta("Rojo", 2, "Harley Davison", 150, 200)
+
 lista_vehiculos = [a, b, c, d, e]
 
-catalogar(lista_vehiculos, 2)
+catalogar(lista_vehiculos, 4)
